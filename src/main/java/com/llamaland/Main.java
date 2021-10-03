@@ -41,7 +41,7 @@ public class Main {
         List<BirthdayEntry> birthdays = null;
 
         try (Stream<String> lines = Files.lines(Paths.get(birthdayFilename))) {
-            birthdays = lines.map(BirthdayLineParser::parseLine)
+            birthdays = lines.map(BirthdayEntry::from)
                     .collect(Collectors.toList());
         } catch( IllegalArgumentException illegalArgumentException) {
             System.out.printf("Error while processing %s - %s\n", birthdayFilename, illegalArgumentException.getMessage());
