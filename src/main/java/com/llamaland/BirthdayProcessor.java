@@ -6,7 +6,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
- *
+ *  This is the main logic of the application. This class produces a list of birthdays which needs to be
+ *  reported on a specific date.
  */
 public class BirthdayProcessor {
     private static final int DEFAULT_THRESHOLD = 20;
@@ -26,6 +27,13 @@ public class BirthdayProcessor {
         this.noticeThreshold = noticeThreshold;
     }
 
+    /**
+     * Generates the list of birthdays to be reported today
+     *
+     * @param birthdays the raw list of birthdays coming from the citizen details file
+     * @param blackList the set of email addresses which are opted out from receiving the email
+     * @return the processed list of birthdays to be reported on the specific date
+     */
     public List<BirthdayEntry> generate(List<BirthdayEntry> birthdays, Set<String> blackList) {
         List<BirthdayEntry> noDuplicateEmails = removeDuplicates(birthdays);
 
